@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:form="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="webjars/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+</head>
+<body>
+
+<div th:replace="fragments/menu :: main-menu"></div>
+
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><br/></div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 offset-md-5 alert alert-success" role="alert">
+                <blockquote class="pull-right">
+                    <p th:text="${aphorism.text}">aphorism</p>
+                    <small><cite th:text="${aphorism.copyright}">author</cite></small>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
