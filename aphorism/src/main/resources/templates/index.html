@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,8 +18,35 @@
             <div class="col-md-12"><br/></div>
         </div>
         <div class="row">
-            <div class="col-md-7 offset-md-5 alert alert-success" role="alert">
-                <blockquote class="pull-right">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <img src="/cat.jpg" class="rounded" alt="cat with lamp" width="100%">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-md-1 col-md-10 text-left text-info">
+                        main.cpp
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-md-1 col-md-10 text-justify border border-primary rounded">
+                        <pre>
+                            <code style="color: darkblue">
+    <span style="color: #ff8000;">#</span>include <span style="color: #ff0000;">&lt;</span><span style="color: green;">iostream</span><span style="color: #ff0000;">&gt;</span>
+
+    <var style="color: #8000ff;">int</var> main <span style="color: burlywood">()</span> <span style="color: blue">{</span>
+        std<span style="color: #ff0000;">::</span>cout <span style="color: darkgoldenrod;">&lt;&lt;</span> <span style="color: green;">"Hello world!"</span> <span style="color: gold;">&lt;&lt;</span> std<span style="color: #ff0000;">::</span>endl;
+
+        <span style="color: #8000ff;">return</span> <var style="color: darkblue">0</var>;
+    <span style="color: blue">}</span>
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" role="alert">
+                <blockquote class="pull-right alert alert-success">
                     <p th:text="${aphorism.text}">aphorism</p>
                     <small><cite th:text="${aphorism.copyright}">author</cite></small>
                 </blockquote>

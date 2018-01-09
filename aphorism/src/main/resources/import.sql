@@ -16,5 +16,7 @@ INSERT INTO `aphorism` (`text`, `copyright`) VALUES ("Ходить по воде
 INSERT INTO `aphorism` (`text`, `copyright`) VALUES ("Трудность работы с программистом заключается в том, что вы не можете понять, что он делает, до тех пор, пока не стало слишком поздно.", "Seymour Cray");
 INSERT INTO `aphorism` (`text`, `copyright`) VALUES ("UNIX невероятно прост, но нужно быть гением, чтобы понять эту простоту.", "Dennis Ritchie");
 
-
+-- insert env data
+INSERT INTO `envelopment_values` (`name`, `val`) VALUES ("title", "Блог ниочем");
+INSERT INTO `envelopment_values` (`name`, `val`) VALUES ("short-description", "Because we can...");
 

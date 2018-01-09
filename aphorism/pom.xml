@@ -11,7 +11,7 @@
         <artifactId>blog</artifactId>
         <groupId>xyz.crearts</groupId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath>
     </parent>
 
 	<name>aphorism</name>
@@ -65,4 +65,5 @@
 		</dependency>
 		<!-- devtools -->
 	</dependencies>
+
 </project>
