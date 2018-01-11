@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head></head>
 <body>
 <div th:fragment="main-menu" class="col-md-12">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="/favicon.png" width="32" height="32" class="d-inline-block align-top" alt="">
-            Crearts.xyz&nbsp;|&nbsp;<small class=".text-lowercase" th:text="${shortDescription}">short description</small>
+        <a class="navbar-brand" href="/">
+            <div class="d-none d-lg-block">
+                <img src="/favicon.png" width="32" height="32" class="d-inline-block align-top" alt="">
+                Crearts.xyz&nbsp;|&nbsp;<small th:text="${shortDescription}">short description</small>
+            </div>
+            <div class="d-lg-none d-xl-none">
+                <img src="/favicon.png" width="32" height="32" class="d-inline-block align-top" alt="">
+                Crearts.xyz
+            </div>
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,11 +21,12 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <!--
                 <li class="nav-item active">
-                    <a class="nav-link" href="/aphorism">Афоризмы</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
-                -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/gallery/">Галлерея</a>
+                </li>
                 <!--
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>

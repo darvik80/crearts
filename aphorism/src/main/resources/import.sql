@@ -20,3 +20,11 @@ INSERT INTO `aphorism` (`text`, `copyright`) VALUES ("UNIX невероятно 
 INSERT INTO `envelopment_values` (`name`, `val`) VALUES ("title", "Блог ниочем");
 INSERT INTO `envelopment_values` (`name`, `val`) VALUES ("short-description", "Because we can...");
 
+-- insert flickr
+INSERT INTO `flickr_account` (`id`, `app_key`, `app_secret`, `user_id`) VALUES (1, "6ab1c24194d653d741906c4d8113b5f6", "8324d51ded03b3f0", "122537468@N08");
+INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157690834602976", "Коммандировка в Alibaba");
+INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157683656405192", "Скотинка");
+INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157682459400482", "Муйне. Лето 2017г.");
+INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157685478718635", "Далат. Весна 2017г.");
+INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157685474331695", "Боракай. Весна 2016г.");
+INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157649073816279", "Фукуок. Осень 2014г.");
