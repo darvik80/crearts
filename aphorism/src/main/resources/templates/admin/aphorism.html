@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="aphorism">
+  <!-- Aphorisms -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+        <th scope="col">Афоризм</th>
+        <th scope="col">Action</th>
+        </thead>
+        <tr>
+          <td align="left">
+            <button class="btn btn-default" data-bind="enable: hasPrev, click: prev()">prev</button>
+          </td>
+          <td align="right">
+            <button class="btn btn-default" data-bind="enable: hasNext, click: next()">next</button>
+          </td>
+        </tr>
+        <tbody data-bind="foreach: aphorisms">
+        <tr>
+          <td>
+            <blockquote class="alert alert-success">
+              <p style="width: 100%" data-bind="text: text">Some text</p>
+              <small><cite data-bind="text: copyright">author</cite></small>
+            </blockquote>
+          </td>
+          <td>
+            <ul>
+              <li>Edit</li>
+              <li>Remove</li>
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+        <tr>
+          <td align="left">
+            <button class="btn btn-default" data-bind="enable: hasPrev, click: prev()">prev</button>
+          </td>
+          <td align="right">
+            <button class="btn btn-default" data-bind="enable: hasNext, click: next()">next</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  <script type='text/javascript' src='/webjars/knockout/3.4.2/dist/knockout.js'></script>
+
+  <script type="text/javascript">
+    var mainModel = function () {
+        var self = this;
+
+        self.hasNext = ko.observable(false);
+        self.hasPrev = ko.observable(false);
+        self.page = null;
+        self.total = null;
+
+        self.aphorisms = ko.observableArray();
+
+        self.reload = function(data) {
+            self.aphorisms(data._embedded.aphorism);
+            self.page = data.page.number;
+            self.total=data.page.totalPages;
+
+            self.hasNext(self.page != null && self.page < self.total-1);
+            self.hasPrev(self.page != null && self.page > 0);
+
+            console.table(data._embedded.aphorism);
+        };
+
+        self.next = function () {
+            if (self.hasNext()) {
+                $.getJSON("/api/aphorism?size=10&page=" + (self.page+1), function(data) {
+                    self.reload(data);
+                })
+            }
+        };
+        self.prev = function () {
+            if (this.hasPrev()) {
+                $.getJSON("/api/aphorism?size=10&page=" + (self.page-1), function(data) {
+                    self.reload(data);
+                })
+            }
+        };
+
+        $.ajax({ url:"/api/aphorism?size=10", type:"GET",
+                success : function(data) {
+                  self.reload(data);
+                }
+            }
+        );
+    };
+
+    ko.applyBindings(new mainModel);
+  </script>
+  </div>
+  <!-- editor -->
+  <div class="row">
+    <div class="offset-md-1 col-md-10">
+      <form id="aphorism" method="post" th:action="'/admin/aphorism/submit'" th:object="${aphorism}">
+        <table>
+          <tr class="form-group">
+            <td align="right" valign="top">
+              <label for="content">Афоризм:</label>
+            </td>
+            <td style="height: 64px;">
+              <textarea id="content" th:field="*{text}">Some text</textarea>
+            </td>
+          </tr>
+          <tr class="form-group">
+            <td align="right">
+              <label for="copyright">Автор:</label>
+            </td>
+            <td align="right" valign="top">
+              <input id="copyright" type="text" th:field="*{copyright}" style="width:100%;text-align:right">Some copyright</input>
+            </td>
+          </tr>
+          <tr class="form-group">
+            <td>
+            </td>
+            <td align="right">
+              <button type="submit" class="btn btn-info">Добавить</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+      <script th:inline="javascript" src="/webjars/tinymce/4.7.4/tinymce.min.js"></script>
+
+      <script th:inline="javascript">
+          tinymce.init({
+              selector: '#content',
+              height: 64,
+              menubar: false,
+              plugins: [
+                  'advlist autolink lists link image charmap print preview anchor textcolor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table contextmenu paste code help'
+              ],
+              toolbar: 'insert | undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+              content_css: [ ]
+          });
+      </script>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

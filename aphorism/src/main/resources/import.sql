@@ -28,3 +28,7 @@ INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES 
 INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157685478718635", "Далат. Весна 2017г.");
 INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157685474331695", "Боракай. Весна 2016г.");
 INSERT INTO `flickr_photo_set` (`account_id`, `album_id`, `description`) VALUES (1, "72157649073816279", "Фукуок. Осень 2014г.");
+
+-- insert menu
+INSERT INTO `menu` (`id`, `title`, `url`, `icon`) VALUES (1, "Афоризмы", "/admin/aphorism", "fa-comments");
+INSERT INTO `menu` (`id`, `title`, `url`, `icon`) VALUES (2, "Галлерея", "/admin/gallery", "fa-photo");

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<div th:include="fragments/menu :: main-menu"></div>
+
+<style type="text/css"> @import url("/css/dashboard.css"); </style>
+
+<div class="container-fluid">
+  <div class="row">
+    <div th:replace="fragments/menu :: admin-menu"></div>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div th:if="${fragment}">
+        <div th:replace="admin/aphorism :: aphorism"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+</body>
+</html>

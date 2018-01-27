@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas></canvas>
+
+<script type="text/javascript">
+    var cx = document.querySelector("canvas").getContext("2d");
+    cx.beginPath();
+    for (var y = 10; y < 100; y += 10) {
+        cx.moveTo(10, y);
+        cx.lineTo(90, y);
+    }
+    cx.stroke();
+
+    cx.font = "28px Georgia";
+    cx.fillStyle = "fuchsia";
+    cx.fillText("Я и текст могу рисовать!", 10, 60);
+
+</script>
+</body>
+</html>
