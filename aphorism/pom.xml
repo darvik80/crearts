@@ -68,13 +68,21 @@
 			<artifactId>tinymce</artifactId>
 			<version>4.7.4</version>
 		</dependency>
-		<!-- knokout -->
+		<!-- knockout -->
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>knockout</artifactId>
 			<version>3.4.2</version>
 		</dependency>
+
 		<!-- webjars -->
+
+		<!-- smtp server -->
+		<dependency>
+			<groupId>org.subethamail</groupId>
+			<artifactId>subethasmtp</artifactId>
+			<version>3.1.7</version>
+		</dependency>
 
 		<!-- devtools -->
 		<dependency>
@@ -85,4 +93,54 @@
 		<!-- devtools -->
 	</dependencies>
 
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+                    <exclude>static/react.app/**</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.6</version>
+				<configuration>
+					<installDirectory>target</installDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v4.4.5</nodeVersion>
+							<npmVersion>3.9.2</npmVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>webpack build</id>
+						<goals>
+							<goal>webpack</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
+

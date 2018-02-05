@@ -24,3 +24,6 @@ nbdist/
 .nb-gradle/
 
 application-dev.properties
+
+node_modules
+src/main/resources/static/built

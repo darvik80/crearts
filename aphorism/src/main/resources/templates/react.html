@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <div id="react">App</div>
+
+    <script th:src="|${'built/bundle.js?'}${#dates.createNow().getTime()}|"></script>
+</body>
+</html>
