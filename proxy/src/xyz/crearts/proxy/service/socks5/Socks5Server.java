@@ -20,10 +20,10 @@ import java.util.Iterator;
  */
 @Log
 public class Socks5Server implements Runnable {
-    private boolean isShuttingDown = false;
+    private volatile boolean shuttingDown = false;
 
-    ServerSocketChannel ssc;
-    ServerSocket ss;
+    private ServerSocketChannel ssc;
+    private ServerSocket ss;
 
     private int port;
     private String host;
@@ -60,7 +60,7 @@ public class Socks5Server implements Runnable {
             throw ex;
         }
 
-        this.isShuttingDown = false;
+        this.shuttingDown = false;
         mainThread = new Thread(this);
         mainThread.start();
     }
@@ -71,12 +71,19 @@ public class Socks5Server implements Runnable {
             return;
         }
 
-        this.isShuttingDown = true;
+        this.shuttingDown = true;
         mainThread.interrupt();
         try {
             mainThread.join();
-        } catch (InterruptedException e) {
-            log.warning("Can't stop socks5: " + e.getMessage());
+        } catch (InterruptedException ex) {
+            log.warning("Can't stop socks5: " + ex.getMessage());
+        }
+
+        try {
+            this.ss.close();
+            this.ssc.close();
+        } catch (IOException ex) {
+            log.warning("Can't close socks5 socket: " + ex.getMessage());
         }
 
         mainThread = null;
@@ -94,7 +101,7 @@ public class Socks5Server implements Runnable {
             ssc.register(s, SelectionKey.OP_ACCEPT);
             log.info("Start socks5 proxy " + this.host + ":" + this.port);
 
-            while (!isShuttingDown) {
+            while (!shuttingDown) {
                 int n = s.select(1000);
                 if (n == 0) {
                     continue;

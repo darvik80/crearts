@@ -3,10 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>xyz.crearts</groupId>
     <artifactId>proxy</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
+
+    <parent>
+        <artifactId>blog</artifactId>
+        <groupId>xyz.crearts</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,11 +32,6 @@
             <artifactId>log4j</artifactId>
             <version>2.10.0</version>
             <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>net.jcip</groupId>
-            <artifactId>jcip-annotations</artifactId>
-            <version>RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>

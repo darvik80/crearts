@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>aphorism</artifactId>
+	<artifactId>service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -11,13 +11,14 @@
         <artifactId>blog</artifactId>
         <groupId>xyz.crearts</groupId>
         <version>1.0.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
     </parent>
 
-	<name>aphorism</name>
-	<description>Aphorism module</description>
+	<name>service</name>
+	<description>Service module</description>
 
 	<properties>
+		<bootstrap.version>4.0.0-beta.3</bootstrap.version>
+		<popper.version>1.12.9</popper.version>
 	</properties>
 
 	<dependencies>
@@ -97,6 +98,12 @@
             <artifactId>proxy</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -110,7 +117,6 @@
 			</resource>
 		</resources>
 		<plugins>
-
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
@@ -146,7 +152,35 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
 </project>
 
