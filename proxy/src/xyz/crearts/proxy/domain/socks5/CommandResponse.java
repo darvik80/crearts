@@ -1,32 +1,19 @@
 package xyz.crearts.proxy.domain.socks5;
 
+import lombok.Data;
+
 import java.net.InetAddress;
 import java.nio.ByteBuffer;
 
 /**
  * @author ivan.kishchenko
  */
+@Data
 public class CommandResponse {
     private ResponseType responseType;
     private AddressType addressType;
     private InetAddress address;
     private int port;
-
-    public void setResponseType(ResponseType responseType) {
-        this.responseType = responseType;
-    }
-
-    public void setAddressType(AddressType addressType) {
-        this.addressType = addressType;
-    }
-
-    public void setAddress(InetAddress address) {
-        this.address = address;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
 
     private int length() {
         int result = 6;

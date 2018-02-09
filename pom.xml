@@ -10,7 +10,8 @@
     </parent>
 
     <modules>
-        <module>aphorism</module>
+        <module>service</module>
+        <module>proxy</module>
     </modules>
 
     <groupId>xyz.crearts</groupId>

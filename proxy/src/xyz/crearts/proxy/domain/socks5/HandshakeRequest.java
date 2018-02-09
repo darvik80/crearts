@@ -1,5 +1,6 @@
 package xyz.crearts.proxy.domain.socks5;
 
+import lombok.Data;
 import xyz.crearts.proxy.exception.IncompleteException;
 
 import java.io.IOException;
@@ -11,15 +12,12 @@ import java.util.Set;
 /**
  * @author ivan.kishchenko
  */
+@Data
 public class HandshakeRequest {
     private Set<AuthType> authList = new HashSet<>();
 
     public HandshakeRequest() {
 
-    }
-
-    public Set<AuthType> getAuthList() {
-        return authList;
     }
 
     public HandshakeRequest read(InputStream is) throws InvalidParameterException, IOException, IncompleteException {

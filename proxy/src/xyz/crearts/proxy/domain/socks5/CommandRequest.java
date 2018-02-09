@@ -1,5 +1,6 @@
 package xyz.crearts.proxy.domain.socks5;
 
+import lombok.Data;
 import xyz.crearts.proxy.exception.IncompleteException;
 
 import java.io.IOException;
@@ -10,32 +11,12 @@ import java.security.InvalidParameterException;
 /**
  * @author ivan.kishchenko
  */
+@Data
 public class CommandRequest {
     private OperationType operationType;
     private AddressType addressType;
     private InetAddress address;
     private int port;
-
-
-    public OperationType getOperationType() {
-        return operationType;
-    }
-
-    public InetAddress getAddress() {
-        return address;
-    }
-
-    public AddressType getAddressType() {
-        return addressType;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
 
     public CommandRequest read(InputStream is) throws InvalidParameterException, IOException, IncompleteException {
         if (Helper.readByte(is) != Helper.PROTO_SOCKS5) {

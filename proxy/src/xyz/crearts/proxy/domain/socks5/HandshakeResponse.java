@@ -1,17 +1,16 @@
 package xyz.crearts.proxy.domain.socks5;
 
+import lombok.Data;
+
 /**
  * @author ivan.kishchenko
  */
+@Data
 public class HandshakeResponse {
     private AuthType authType;
 
     public HandshakeResponse() {
         this.authType = AuthType.AUTH_USERNAME;
-    }
-
-    public void setAuthType(AuthType authType) {
-        this.authType = authType;
     }
 
     public byte[] getBytes() {
