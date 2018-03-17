@@ -14,7 +14,29 @@
             <div class="col-md-7">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <img src="/cat.jpg" class="rounded" alt="cat with lamp" width="100%">
+                        <style type="text/css"> @import url("/css/carousel.css"); </style>
+
+                        <div id="myCarousel" class="carousel slide col-md-12" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <th:block th:each="photo, iter : ${carousel}">
+                                    <li data-target="#myCarousel" th:attr="data-slide-to=${photo.id}"></li>
+                                </th:block>>
+                            </ol>
+                            <div class="carousel-inner">
+                                <li data-target="#myCarousel" class="carousel-item" th:each="photo, iter : ${carousel}" th:classappend="${iter.index} ? '' : active">
+                                    <img th:src="${photo.url}">
+                                    <div class="carousel-caption" th:text="${photo.title}">photo title</div>
+                                </li>
+                            </div>
+                            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="row">

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import xyz.crearts.service.model.FlickrPhotoSet;
 import xyz.crearts.service.repository.FlickrPhotoSetRepository;
+import xyz.crearts.service.services.FlickrService;
 
 import java.util.List;
 
@@ -18,6 +19,8 @@ import java.util.List;
 @RequestMapping(value = "/gallery")
 public class GalleryController extends ContextHelper {
     private FlickrPhotoSetRepository flickrPhotoSetRepository;
+
+    private FlickrService flickrService;
 
     public GalleryController(FlickrPhotoSetRepository flickrPhotoSetRepository) {
         this.flickrPhotoSetRepository = flickrPhotoSetRepository;
